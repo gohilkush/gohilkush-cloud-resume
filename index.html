@@ -181,6 +181,18 @@ h2::after {
         </ul>
     </ul>
   </div>
+  <script>
+    if (localStorage.getItem('visits')) {
+  let count = parseInt(localStorage.getItem('visits'));
+  count++;
+  localStorage.setItem('visits', count);
+  document.getElementById('visitorCount').innerText = `You are visitor number ${count}`;
+} else {
+  localStorage.setItem('visits', 1);
+  document.getElementById('visitorCount').innerText = 'You are visitor number 1';
+}
+
+  </script>
 </body>
 </html>
 
