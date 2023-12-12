@@ -187,10 +187,10 @@ h2::after {
   let count = parseInt(localStorage.getItem('visits'));
   count++;
   localStorage.setItem('visits', count);
-  document.getElementById('visitorCount').innerText = `You are visitor number ${count}`;
+  document.getElementById('visitorCount').innerText = `Your are number ${count}`;
 } else {
   localStorage.setItem('visits', 1);
-  document.getElementById('visitorCount').innerText = 'You are visitor number 1';
+  document.getElementById('visitorCount').innerText = 'You the first visitor!';
 }
 
   </script>
