@@ -194,6 +194,19 @@ h2::after {
 }
 
   </script>
+  <script>
+  // Update visitor count using this cloud function
+  fetch('https://us-central1-crafty-nomad-407800.cloudfunctions.net/update_to_firestore')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('visitorCount').innerText = data;
+    })
+    .catch(error => {
+      console.error('Error fetching visitor count:', error);
+      document.getElementById('visitorCount').innerText = 'Visitor count unavailable';
+    });
+</script>
+
 </body>
 </html>
 
