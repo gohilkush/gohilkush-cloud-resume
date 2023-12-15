@@ -182,7 +182,18 @@ h2::after {
         </ul>
     </ul>
   </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
   <script>
+    /*using firebase*/
+     const firebaseConfig = {
+      apiKey: "AIzaSyCb9nWBBbTs4FIcs4Dsa6pvKifv-X_ISpA",
+      authDomain: "crafty-nomad-407800.firebaseapp.com	",
+      projectId: "crafty-nomad-407800",
+    };
+ firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    
     if (localStorage.getItem('visits')) {
   let count = parseInt(localStorage.getItem('visits'));
   count++;
@@ -192,7 +203,16 @@ h2::after {
   localStorage.setItem('visits', 1);
   document.getElementById('visitorCount').innerText = 'You are the first visitor!';
 }
-
+function updateCountInFirestore(count) {
+      db.collection('visitorCount').doc('countDocument').set({
+        count: count
+      })
+      .then(() => {
+        console.log('Properly updated visitor count in Firestore!');
+      })
+      .catch((error) => {
+        console.error('Visitor count didn't properly update: ', error);
+      });
   </script>
 </body>
 </html>
